@@ -7,14 +7,8 @@
 
 extern "C" {
 
-	/* .bss has @nobits, so we need to force space allocation in elf file */
 	unsigned char __attribute__((aligned(4096), section(".data"))) data11[4096];
 
-	/* noiline to force compiler to not insert this function into main.
-	 *
-	 * Yes, yes, yes it is global, but clang is smart enough to inline and
-	 * anyway leave this function
-	 */
 	unsigned long __attribute__((noinline)) compute(const char *str)
 	{
 		unsigned long hash;

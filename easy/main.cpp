@@ -2,14 +2,16 @@
 #include <string>
 #include <functional>
 
-unsigned long __attribute__((noinline)) compute(const char *str)
+unsigned long compute(const char *str)
 	{
 		unsigned long hash;
 
                 for (char c = *str; *str; str++)
                         hash = ((hash << 5) + hash) + c;
+                
+		std::cout << std::flush;
 
-                return hash;
+		return hash;
 	}
 
 int main(void)
@@ -21,7 +23,7 @@ int main(void)
 
 	std::cout << "Enter password: ";
 	std::cin >> input1;
-
+	
 	if (std::atoll(input1.c_str()) == compute(input.c_str()))
 		std::cout << "Win\n";
 	else
